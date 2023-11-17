@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+use App\Http\Controllers\Admin\ProfileController;
+Route::get('/top', [ProfileController::class, 'add'])->name('top');
+
+use App\Http\Controllers\Admin\NewarticleController;
+Route::get('/new', [NewArticleController::class, 'add'])->name('new');
+
+use App\Http\Controllers\Admin\BlogController;
+Route::get('/kaze', [BlogController::class, 'add'])->name('kaze');
+
+use App\Http\Controllers\Admin\FormController;
+Route::get('/form', [FormController::class, 'add'])->name('form');
