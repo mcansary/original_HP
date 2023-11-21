@@ -42,3 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 }
+
+User::create([
+            'name' => 'watanabe',
+            'email' => 'watanabe@tech.com',
+            'password' => "1234",
+       ]);

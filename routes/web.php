@@ -18,8 +18,8 @@ Route::get('/', function () {
 });
 
 use App\Http\Controllers\Admin\ProfileController;
-Route::get('/top', [ProfileController::class, 'add'])->name('top');
-// ->middleware('auth');
+Route::get('/top', [ProfileController::class, 'add'])->name('top')->middleware('auth');
+
 use App\Http\Controllers\Admin\NewArticleController;
 Route::get('/new', [NewArticleController::class, 'add'])->name('new');
 
@@ -39,3 +39,19 @@ Route::get('/form', [FormController::class, 'add'])->name('form');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// ログイン後の処理
+Route::group(['middleware' => ['auth:admin']], function () {
+
+            // 記事の新規投稿画面
+            Route::get('admin/post/add', [PostController::class, 'add'])->name('admin.post.add');
+            // 記事の投稿
+            Route::post('admin/post/add', [PostController::class, 'addPost']);
+            // 記事の編集画面
+            Route::get('admin/post/edit', [PostController::class, 'edit'])->name('admin.post.edit');
+            // 記事の更新
+            Route::post('admin/post/edit', [PostController::class, 'editPost']);
+            // 記事の削除
+            Route::get('admin/post/delete_one', [PostController::class, 'deleteOne'])->name('admin.post.delete');
+
+});
