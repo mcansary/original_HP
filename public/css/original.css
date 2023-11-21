@@ -14,3 +14,9 @@
 .side-bar-bg {
     background-image: url(../image/side-bar6.jpg);
 }
+
+.kaze-h1 {
+    /*background-image: url(../image/bar6.gif);*/
+    /*background-repeat: no-repeat;*/
+    background-color: #52BCDE;
+}
