@@ -41,4 +41,66 @@ class AdminController extends Controller
         
         return redirect('admin/kaze/add');
     }
+    
+    public function index(Request $request)
+    {
+        $cond_title = $request->cond_title;
+        if ($cond_title != '') {
+            // 検索されたら検索結果を取得する
+            $posts = Kaze::where('title', $cond_title)->get();
+        } else {
+            // それ以外はすべてのニュースを取得する
+            $posts = Kaze::all();
+        }
+        return view('admin.kaze.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+    }
+    
+    public function edit(Request $request)
+    {
+        // News Modelからデータを取得する
+        $kaze = Kaze::find($request->id);
+        if (empty($kaze)) {
+            abort(404);
+        }
+        return view('admin.kaze.edit', ['kaze_form' => $kaze]);
+    }
+
+    public function update(Request $request)
+    {
+        // Validationをかける
+        $this->validate($request, Kaze::$rules);
+        // News Modelからデータを取得する
+        $kaze = Kaze::find($request->id);
+        // 送信されてきたフォームデータを格納する
+        $kaze_form = $request->all();
+        
+        if ($request->remove == 'true') {
+            $kaze_form['image_path'] = null;
+        } elseif ($request->file('image')) {
+            $path = $request->file('image')->store('public/image');
+            $kaze_form['image_path'] = basename($path);
+        } else {
+            $kaze_form['image_path'] = $kaze->image_path;
+        }
+
+        unset($kaze_form['image']);
+        unset($kaze_form['remove']);
+        unset($kaze_form['_token']);
+
+        // 該当するデータを上書きして保存する
+        $kaze->fill($kaze_form)->save();
+
+        return redirect('admin/kaze/index');
+    }
+    
+    public function delete(Request $request)
+    {
+        // 該当するNews Modelを取得
+        $kaze = Kaze::find($request->id);
+
+        // 削除する
+        $kaze->delete();
+
+        return redirect('admin/kaze/index');
+    }
 }

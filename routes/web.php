@@ -50,6 +50,10 @@ use App\Http\Controllers\Admin\AdminController;
 Route::controller(AdminController::class)->prefix('admin')->middleware('auth')->group(function() {
     Route::get('kaze/add', 'addKaze')->name('admin.kaze.add');
     Route::post('kaze/add', 'create')->name('admin.kaze.create');
+    Route::get('kaze/index', 'index')->name('admin.kaze.index');
+    Route::get('kaze/edit', 'edit')->name('admin.kaze.edit');
+    Route::post('kaze/edit', 'update')->name('admin.kaze.update');
+    Route::get('kaze/delete', 'delete')->name('admin.kaze.delete');
 });
 
 // Route::group(['middleware' => ['auth']], function () {
