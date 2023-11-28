@@ -10,6 +10,6 @@ class NewArticleController extends Controller
     //
     public function add()
     {
-        return view('admin.newarticle.insert');
+        return view('auth.newarticle.insert');
     }
 }

@@ -10,6 +10,6 @@ class FormController extends Controller
     //
     public function add()
     {
-        return view('admin.form.create');
+        return view('auth.form.create');
     }
 }

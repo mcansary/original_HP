@@ -10,12 +10,12 @@ class BlogController extends Controller
     //
     public function add()
     {
-        return view('admin.blog.insert');
+        return view('auth.blog.insert');
     }
     
     public function create(Request $request)
     {
         // admin/news/createにリダイレクトする
-        return redirect('admin/blog/insert');
+        return redirect('auth/blog/insert');
     }
 }
