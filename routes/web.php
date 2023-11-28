@@ -42,14 +42,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // ログイン後の処理
 use App\Http\Controllers\Admin\AdminController;
-Route::group(['middleware' => ['auth']], function () {
-    // 記事の新規投稿画面
-    Route::get('/admin/kaze/add', [AdminController::class, 'addKaze'])->name('admin.kaze.add');
-});
+// Route::group(['middleware' => ['auth']], function () {
+//     // 記事の新規投稿画面
+//     Route::get('/admin/kaze/add', [AdminController::class, 'addKaze'])->name('admin.kaze.add');
+// });
 // // カリキュラムだと、、、
-// Route::controller(AdminController::class)->prefix('admin')->middleware('auth')->group(function() {
-//     Route::get('kaze/add', 'addKaze')->name('admin.kaze.add');
-// }
+Route::controller(AdminController::class)->prefix('admin')->middleware('auth')->group(function() {
+    Route::get('kaze/add', 'addKaze')->name('admin.kaze.add');
+    Route::post('kaze/add', 'create')->name('admin.kaze.create');
+});
 
 // Route::group(['middleware' => ['auth']], function () {
 //
