@@ -39,7 +39,7 @@ class AdminController extends Controller
         $kaze->fill($form);
         $kaze->save();
         
-        return redirect('admin/kaze/add');
+        return redirect('admin/kaze/index');
     }
     
     public function index(Request $request)

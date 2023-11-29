@@ -50,15 +50,17 @@ Route::controller(AdminController::class)->prefix('admin')->middleware('auth')->
     Route::get('kaze/edit', 'edit')->name('admin.kaze.edit');
     Route::post('kaze/edit', 'update')->name('admin.kaze.update');
     Route::get('kaze/delete', 'delete')->name('admin.kaze.delete');
+});
 // Route::group(['middleware' => ['auth']], function () {
 //     // 記事の新規投稿画面
 //     Route::get('/admin/kaze/add', [AdminController::class, 'addKaze'])->name('admin.kaze.add');
 // });
 
 // 11/29メンタリングで聞く（一般ユーザーが読むサイト作成のルーティング） 
-// use App\Http\Controllers\KazeController as PublicKazeController;
-// Route::get('/kaze', [PublicKazeController::class, 'index'])->name('kaze.index');
-// });
+use App\Http\Controllers\KazeController;
+Route::get('/kaze/index', [KazeController::class, 'index'])->name('kaze.index');
+Route::get('/kaze/detail', [KazeController::class, 'detail'])->name('kaze.detail');
+
 
 
 
