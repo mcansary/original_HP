@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kaze', function (Blueprint $table) {
+        Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->string('title'); // ニュースのタイトルを保存するカラム
             $table->text('body');  // ニュースの本文を保存するカラム
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kaze');
+        Schema::dropIfExists('news');
     }
 };

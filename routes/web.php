@@ -51,6 +51,17 @@ Route::controller(AdminController::class)->prefix('admin')->middleware('auth')->
     Route::post('kaze/edit', 'update')->name('admin.kaze.update');
     Route::get('kaze/delete', 'delete')->name('admin.kaze.delete');
 });
+
+use App\Http\Controllers\Admin\NewsController;
+// // カリキュラムだと、、、
+Route::controller(NewsController::class)->prefix('admin')->middleware('auth')->group(function() {
+    Route::get('news/add', 'addnews')->name('admin.news.add');
+    Route::post('news/add', 'create')->name('admin.news.create');
+    Route::get('news/index', 'index')->name('admin.news.index');
+    Route::get('news/edit', 'edit')->name('admin.news.edit');
+    Route::post('news/edit', 'update')->name('admin.news.update');
+    Route::get('news/delete', 'delete')->name('admin.news.delete');
+});
 // Route::group(['middleware' => ['auth']], function () {
 //     // 記事の新規投稿画面
 //     Route::get('/admin/kaze/add', [AdminController::class, 'addKaze'])->name('admin.kaze.add');
