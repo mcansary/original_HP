@@ -9,6 +9,7 @@ class News extends Model
 {
     use HasFactory;
     // 以下を追記
+    protected $table = 'news';
     protected $guarded = array('id');
 
     public static $rules = array(

@@ -72,6 +72,9 @@ use App\Http\Controllers\KazeController;
 Route::get('/kaze/index', [KazeController::class, 'index'])->name('kaze.index');
 Route::get('/kaze/detail', [KazeController::class, 'detail'])->name('kaze.detail');
 
+use App\Http\Controllers\NewsController as PublicNewsController;
+Route::get('/news/index', [PublicNewsController::class, 'index'])->name('news.index');
+Route::get('/news/detail', [PublicNewsController::class, 'detail'])->name('news.detail');
 
 
 
