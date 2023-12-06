@@ -27,6 +27,18 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label class="col-md-2" for="title">ナンバー年</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="year" value="{{ $kaze_form->year }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2" for="title">ナンバー月</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="month" value="{{ $kaze_form->month }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-md-2" for="body">本文</label>
                         <div class="col-md-10">
                             <textarea class="form-control" name="body" rows="20">{{ $kaze_form->body }}</textarea>

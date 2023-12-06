@@ -16,4 +16,11 @@ class Kaze extends Model
         'title' => 'required',
         'body' => 'required',
     );
+    
+    // public function getKazeList($num_per_page = 10)
+    // {
+    //     // Eloquent モデルはクエリビルダとしても動作するので、orderBy メソッドも paginate メソッドも利用できる
+    //     // paginate メソッドを使うと、ページネーションに必要な全件数の取得やオフセットの指定などは全部やってくれる
+    //     return $this->orderBy('kaze_id', 'desc')->paginate($num_per_page);
+    // }
 }
