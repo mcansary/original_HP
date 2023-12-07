@@ -10,22 +10,31 @@ class NewsController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = News::all()->sortByDesc('updated_at');
+        $posts = News::orderByDesc('id')->limit(12)->get();
 
-        if (count($posts) > 0) {
-            $headline = $posts->shift();
-        } else {
-            $headline = null;
-        }
+        // if (count($posts) > 0) {
+        //     $headline = $posts->shift();
+        // } else {
+        //     $headline = null;
+        // }
 
-        // kaze/index.blade.php ファイルを渡している
+        // news/index.blade.php ファイルを渡している
         // また View テンプレートに headline、 posts、という変数を渡している
-        return view('news.index', ['headline' => $headline, 'posts' => $posts]);
+        return view('news.index', [/*'headline' => $headline,*/ 'posts' => $posts]);
     }
 
     public function detail(Request $request)
     {
-        $detail = News::latest()->first();
+        if (empty($request->id)) {
+            // 最新の情報を取得する→パラメータが渡されていないとき
+            $detail = News::orderByDesc('id')->limit(1)->first();
+        } else {
+            // id=? の指定があるとき
+            $detail = News::find($request->id);
+            if (empty($detail)) {
+                abort(404);
+            }
+        }
         return view('news.detail', ['detail' => $detail]);
     }
 }

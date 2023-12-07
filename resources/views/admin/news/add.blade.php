@@ -28,6 +28,18 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label class="col-md-2">ナンバー年</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="year" value="{{ old('year') }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2">ナンバー月</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="month" value="{{ old('month') }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-md-2">本文</label>
                         <div class="col-md-10">
                             <textarea class="form-control" name="body" rows="20">{{ old('body') }}</textarea>

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-const NUM_PER_PAGE = 10;
 
 use Illuminate\Http\Request;
 
