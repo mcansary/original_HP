@@ -71,6 +71,7 @@ Route::controller(NewsController::class)->prefix('admin')->middleware('auth')->g
 use App\Http\Controllers\KazeController;
 Route::get('/kaze/index', [KazeController::class, 'index'])->name('kaze.index');
 Route::get('/kaze/detail', [KazeController::class, 'detail'])->name('kaze.detail');
+Route::get('/kaze/list', [KazeController::class, 'list'])->name('kaze.list');
 
 use App\Http\Controllers\NewsController as PublicNewsController;
 Route::get('/news/index', [PublicNewsController::class, 'index'])->name('news.index');

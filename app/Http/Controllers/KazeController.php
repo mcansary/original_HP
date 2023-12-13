@@ -40,6 +40,13 @@ class KazeController extends Controller
         return view('kaze.detail', ['detail' => $detail]);
     }
     
+    public function list(Request $request)
+    {
+        $kaze_list = Kaze::select('year')->groupBy('year')->get();
+
+        return view('kaze.list', ['kaze_list' => $kaze_list]);
+    }
+    
     // public function list()
     // {
     //     $list = $this->article->getArticleList(self::NUM_PER_PAGE);

@@ -150,40 +150,20 @@
            <table border="0" width="580" cellpadding="0" cellspacing="0">
               <tr>
                 <td>
-                  <!-- 「風のたより一覧掲載」 -->
+                  <!-- 「風のたより年ごとリスト掲載」 -->
         <!--          <div class="container">-->
         <!--<hr color="#c0c0c0">-->
         <div class="row">
-            <div class="posts col-md-8 mx-auto mt-3">
-                @foreach($posts as $post)
-                    <div class="post">
-                        <div class="row">
-                            <div class="text col-md-6">
-                                <div class="date">
-                                  {{ $post->year }}年{{ $post->month }}月号
-                                </div>
-                                <div class="title">
-                                    <h5><a href="{{ route('kaze.detail', ['id' => $post->id]) }}">■{{ Str::limit($post->title, 150) }}</a></h5>
-                                    <!--12/05各記事に飛ぶ方法を聞く-->
-                                    
-                                </div>
-                                <!--<div class="body mt-3">-->
-                                <!--    {{ Str::limit($post->body, 1500) }}-->
-                                <!--</div>-->
-                            </div>
-                            <div class="image col-md-6 text-right mt-4">
-                                @if ($post->image_path)
-                                    <img src="{{ secure_asset('storage/image/' . $post->image_path) }}">
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <hr color="#c0c0c0">
-                @endforeach
-                <div class="list">
-                      <a href="{{ route('kaze.list') }}">バックナンバ一</a>
-                </div>
+           <h2>風のたより一覧</h2>
+            @foreach($kaze_list as $kaze)
+            <div class="title">
+                <h4><a href="{{ route('kaze.index') }}">■{{ $kaze->year }}年</a></h4>
             </div>
+            @endforeach
+            
+                        
+            <hr color="#c0c0c0">
+               
         </div>
     </div>
     </div>
@@ -215,6 +195,3 @@
 
 </body>
 </html>
-
-
-
